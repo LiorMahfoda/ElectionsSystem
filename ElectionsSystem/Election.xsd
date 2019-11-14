@@ -1,0 +1,246 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="Election" targetNamespace="http://tempuri.org/Election.xsd" xmlns:mstns="http://tempuri.org/Election.xsd" xmlns="http://tempuri.org/Election.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="ElectionsProjectConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="ElectionsProjectConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.ElectionsSystem.Properties.Settings.GlobalReference.Default.ElectionsProjectConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="VoteTableAdapter" GeneratorDataComponentClassName="VoteTableAdapter" Name="Vote" UserDataComponentName="VoteTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ElectionsProjectConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        Vote.id, Vote.contender, Vote.party, Citizens.gender, Citizens.id AS gender , 
+Citizens.neighborhood AS neighborhood,Citizens.birthdate as birthdate
+FROM            Vote INNER JOIN
+                         Citizens ON Vote.id = Citizens.id
+</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="id" DataSetColumn="id" />
+              <Mapping SourceColumn="contender" DataSetColumn="contender" />
+              <Mapping SourceColumn="party" DataSetColumn="party" />
+              <Mapping SourceColumn="gender" DataSetColumn="gender" />
+              <Mapping SourceColumn="gender1" DataSetColumn="gender1" />
+              <Mapping SourceColumn="neighborhood" DataSetColumn="neighborhood" />
+              <Mapping SourceColumn="birthdate" DataSetColumn="birthdate" />
+            </Mappings>
+            <Sources>
+              <DbSource ConnectionRef="ElectionsProjectConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillBy" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy" GeneratorSourceName="FillBy" GetMethodModifier="Public" GetMethodName="GetDataBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillBy">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        Vote.id, Vote.contender, Vote.party, Citizens.gender, Citizens.id AS Expr1
+FROM            Vote INNER JOIN
+                         Citizens ON Vote.id = Citizens.id
+GROUP BY Vote.id, Vote.contender, Vote.party, Citizens.id</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </Sources>
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="CitizensTableAdapter" GeneratorDataComponentClassName="CitizensTableAdapter" Name="Citizens" UserDataComponentName="CitizensTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ElectionsProjectConnectionString (Settings)" DbObjectName="ElectionsProject.dbo.Citizens" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [dbo].[Citizens] WHERE (([id] = @Original_id) AND ([name] = @Original_name) AND ([birthdate] = @Original_birthdate) AND ([street] = @Original_street) AND ([house] = @Original_house) AND ([gender] = @Original_gender) AND ([pass] = @Original_pass) AND ((@IsNull_neighborhood = 1 AND [neighborhood] IS NULL) OR ([neighborhood] = @Original_neighborhood)))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_id" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="id" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_name" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="name" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Date" Direction="Input" ParameterName="@Original_birthdate" Precision="0" ProviderType="Date" Scale="0" Size="0" SourceColumn="birthdate" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_street" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="street" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_house" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="house" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_gender" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="gender" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_pass" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="pass" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_neighborhood" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="neighborhood" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_neighborhood" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="neighborhood" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [dbo].[Citizens] ([id], [name], [birthdate], [street], [house], [gender], [pass], [neighborhood]) VALUES (@id, @name, @birthdate, @street, @house, @gender, @pass, @neighborhood);
+SELECT id, name, birthdate, street, house, gender, pass, neighborhood FROM Citizens WHERE (id = @id)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@id" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="id" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@name" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="name" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Date" Direction="Input" ParameterName="@birthdate" Precision="0" ProviderType="Date" Scale="0" Size="0" SourceColumn="birthdate" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@street" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="street" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@house" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="house" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@gender" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="gender" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@pass" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="pass" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@neighborhood" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="neighborhood" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT id, name, birthdate, street, house, gender, pass, neighborhood FROM dbo.Citizens</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [dbo].[Citizens] SET [id] = @id, [name] = @name, [birthdate] = @birthdate, [street] = @street, [house] = @house, [gender] = @gender, [pass] = @pass, [neighborhood] = @neighborhood WHERE (([id] = @Original_id) AND ([name] = @Original_name) AND ([birthdate] = @Original_birthdate) AND ([street] = @Original_street) AND ([house] = @Original_house) AND ([gender] = @Original_gender) AND ([pass] = @Original_pass) AND ((@IsNull_neighborhood = 1 AND [neighborhood] IS NULL) OR ([neighborhood] = @Original_neighborhood)));
+SELECT id, name, birthdate, street, house, gender, pass, neighborhood FROM Citizens WHERE (id = @id)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@id" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="id" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@name" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="name" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Date" Direction="Input" ParameterName="@birthdate" Precision="0" ProviderType="Date" Scale="0" Size="0" SourceColumn="birthdate" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@street" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="street" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@house" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="house" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@gender" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="gender" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@pass" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="pass" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@neighborhood" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="neighborhood" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_id" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="id" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_name" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="name" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Date" Direction="Input" ParameterName="@Original_birthdate" Precision="0" ProviderType="Date" Scale="0" Size="0" SourceColumn="birthdate" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_street" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="street" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_house" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="house" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_gender" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="gender" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_pass" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="pass" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_neighborhood" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="neighborhood" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_neighborhood" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="neighborhood" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="id" DataSetColumn="id" />
+              <Mapping SourceColumn="name" DataSetColumn="name" />
+              <Mapping SourceColumn="birthdate" DataSetColumn="birthdate" />
+              <Mapping SourceColumn="street" DataSetColumn="street" />
+              <Mapping SourceColumn="house" DataSetColumn="house" />
+              <Mapping SourceColumn="gender" DataSetColumn="gender" />
+              <Mapping SourceColumn="pass" DataSetColumn="pass" />
+              <Mapping SourceColumn="neighborhood" DataSetColumn="neighborhood" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="Election" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="Election" msprop:Generator_UserDSName="Election">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Vote" msprop:Generator_TableClassName="VoteDataTable" msprop:Generator_TableVarName="tableVote" msprop:Generator_RowChangedName="VoteRowChanged" msprop:Generator_TablePropName="Vote" msprop:Generator_RowDeletingName="VoteRowDeleting" msprop:Generator_RowChangingName="VoteRowChanging" msprop:Generator_RowEvHandlerName="VoteRowChangeEventHandler" msprop:Generator_RowDeletedName="VoteRowDeleted" msprop:Generator_RowClassName="VoteRow" msprop:Generator_UserTableName="Vote" msprop:Generator_RowEvArgName="VoteRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="contender" msprop:Generator_ColumnVarNameInTable="columncontender" msprop:Generator_ColumnPropNameInRow="contender" msprop:Generator_ColumnPropNameInTable="contenderColumn" msprop:Generator_UserColumnName="contender">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="party" msprop:Generator_ColumnVarNameInTable="columnparty" msprop:Generator_ColumnPropNameInRow="party" msprop:Generator_ColumnPropNameInTable="partyColumn" msprop:Generator_UserColumnName="party">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="gender" msprop:Generator_ColumnVarNameInTable="columngender" msprop:Generator_ColumnPropNameInRow="gender" msprop:Generator_ColumnPropNameInTable="genderColumn" msprop:Generator_UserColumnName="gender">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="gender1" msprop:Generator_ColumnVarNameInTable="columngender1" msprop:Generator_ColumnPropNameInRow="gender1" msprop:Generator_ColumnPropNameInTable="gender1Column" msprop:Generator_UserColumnName="gender1">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="neighborhood" msprop:Generator_ColumnVarNameInTable="columnneighborhood" msprop:Generator_ColumnPropNameInRow="neighborhood" msprop:Generator_ColumnPropNameInTable="neighborhoodColumn" msprop:Generator_UserColumnName="neighborhood" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="birthdate" msprop:Generator_ColumnVarNameInTable="columnbirthdate" msprop:Generator_ColumnPropNameInRow="birthdate" msprop:Generator_ColumnPropNameInTable="birthdateColumn" msprop:Generator_UserColumnName="birthdate" type="xs:dateTime" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Citizens" msprop:Generator_TableClassName="CitizensDataTable" msprop:Generator_TableVarName="tableCitizens" msprop:Generator_RowChangedName="CitizensRowChanged" msprop:Generator_TablePropName="Citizens" msprop:Generator_RowDeletingName="CitizensRowDeleting" msprop:Generator_RowChangingName="CitizensRowChanging" msprop:Generator_RowEvHandlerName="CitizensRowChangeEventHandler" msprop:Generator_RowDeletedName="CitizensRowDeleted" msprop:Generator_RowClassName="CitizensRow" msprop:Generator_UserTableName="Citizens" msprop:Generator_RowEvArgName="CitizensRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="name" msprop:Generator_ColumnVarNameInTable="columnname" msprop:Generator_ColumnPropNameInRow="name" msprop:Generator_ColumnPropNameInTable="nameColumn" msprop:Generator_UserColumnName="name">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="birthdate" msprop:Generator_ColumnVarNameInTable="columnbirthdate" msprop:Generator_ColumnPropNameInRow="birthdate" msprop:Generator_ColumnPropNameInTable="birthdateColumn" msprop:Generator_UserColumnName="birthdate" type="xs:dateTime" />
+              <xs:element name="street" msprop:Generator_ColumnVarNameInTable="columnstreet" msprop:Generator_ColumnPropNameInRow="street" msprop:Generator_ColumnPropNameInTable="streetColumn" msprop:Generator_UserColumnName="street">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="house" msprop:Generator_ColumnVarNameInTable="columnhouse" msprop:Generator_ColumnPropNameInRow="house" msprop:Generator_ColumnPropNameInTable="houseColumn" msprop:Generator_UserColumnName="house" type="xs:int" />
+              <xs:element name="gender" msprop:Generator_ColumnVarNameInTable="columngender" msprop:Generator_ColumnPropNameInRow="gender" msprop:Generator_ColumnPropNameInTable="genderColumn" msprop:Generator_UserColumnName="gender">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="pass" msprop:Generator_ColumnVarNameInTable="columnpass" msprop:Generator_ColumnPropNameInRow="pass" msprop:Generator_ColumnPropNameInTable="passColumn" msprop:Generator_UserColumnName="pass">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="neighborhood" msprop:Generator_ColumnVarNameInTable="columnneighborhood" msprop:Generator_ColumnPropNameInRow="neighborhood" msprop:Generator_ColumnPropNameInTable="neighborhoodColumn" msprop:Generator_UserColumnName="neighborhood" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint3" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Vote" />
+      <xs:field xpath="mstns:id" />
+    </xs:unique>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Citizens" />
+      <xs:field xpath="mstns:id" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

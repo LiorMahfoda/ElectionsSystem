@@ -1,0 +1,577 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.3.0\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.3.0\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FB1AB372-442D-439F-8832-FAB907109B68}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ElectionsSystem</RootNamespace>
+    <AssemblyName>ElectionsSystem</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.3.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.3.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Report.Viewer.11.0.0.0\lib\net\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Report.Viewer.11.0.0.0\lib\net\Microsoft.ReportViewer.ProcessingObjectModel.DLL</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Report.Viewer.11.0.0.0\lib\net\Microsoft.ReportViewer.WebForms.DLL</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.WinForms.10.0.40219.1\lib\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BussinessLogic\Admin.cs" />
+    <Compile Include="BussinessLogic\AdminAdapter.cs" />
+    <Compile Include="BussinessLogic\Citizen.cs" />
+    <Compile Include="BussinessLogic\Contender.cs" />
+    <Compile Include="BussinessLogic\PartyLeader.cs" />
+    <Compile Include="BussinessLogic\PartyMember.cs" />
+    <Compile Include="BussinessLogic\Press.cs" />
+    <Compile Include="BussinessLogic\PressDecorator.cs" />
+    <Compile Include="BussinessLogic\PressElectionDay.cs" />
+    <Compile Include="DataAccess\Database.cs" />
+    <Compile Include="Election.cs">
+      <DependentUpon>Election.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Election.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Election.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Presntation\AddContender.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presntation\AddContender.Designer.cs">
+      <DependentUpon>AddContender.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presntation\AddAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presntation\AddAdmin.Designer.cs">
+      <DependentUpon>AddAdmin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presntation\AddPress.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presntation\AddPress.Designer.cs">
+      <DependentUpon>AddPress.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presntation\AddPartyMember.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presntation\AddPartyMember.Designer.cs">
+      <DependentUpon>AddPartyMember.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presntation\AddPartyLeaderMember.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presntation\AddPartyLeaderMember.Designer.cs">
+      <DependentUpon>AddPartyLeaderMember.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presntation\ChangePass.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presntation\ChangePass.Designer.cs">
+      <DependentUpon>ChangePass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presntation\ChangePlatform.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presntation\ChangePlatform.designer.cs">
+      <DependentUpon>ChangePlatform.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presntation\FinalResContender.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presntation\FinalResContender.Designer.cs">
+      <DependentUpon>FinalResContender.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presntation\FinalResParty.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presntation\FinalResParty.Designer.cs">
+      <DependentUpon>FinalResParty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presntation\PartyRegistration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presntation\PartyRegistration.Designer.cs">
+      <DependentUpon>PartyRegistration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presntation\ReportAgeContender.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presntation\ReportAgeContender.Designer.cs">
+      <DependentUpon>ReportAgeContender.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presntation\ReportAgeParty.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presntation\ReportAgeParty.Designer.cs">
+      <DependentUpon>ReportAgeParty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presntation\ReportContenderGender.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presntation\ReportContenderGender.Designer.cs">
+      <DependentUpon>ReportContenderGender.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presntation\ReportContenderNeighberhood.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presntation\ReportContenderNeighberhood.Designer.cs">
+      <DependentUpon>ReportContenderNeighberhood.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presntation\ReportPerNeighborhood.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presntation\ReportPerNeighborhood.Designer.cs">
+      <DependentUpon>ReportPerNeighborhood.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presntation\ReportGender.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presntation\ReportGender.Designer.cs">
+      <DependentUpon>ReportGender.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presntation\Inbox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presntation\Inbox.Designer.cs">
+      <DependentUpon>Inbox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presntation\PartyLeader_menu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presntation\PartyLeader_menu.Designer.cs">
+      <DependentUpon>PartyLeader_menu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presntation\Admin_menu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presntation\Admin_menu.Designer.cs">
+      <DependentUpon>Admin_menu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presntation\Citizen_menu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presntation\Citizen_menu.Designer.cs">
+      <DependentUpon>Citizen_menu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presntation\Contender_menu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presntation\Contender_menu.Designer.cs">
+      <DependentUpon>Contender_menu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presntation\ApplyRequestContender.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presntation\ApplyRequestContender.Designer.cs">
+      <DependentUpon>ApplyRequestContender.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presntation\DeleteAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presntation\DeleteAdmin.Designer.cs">
+      <DependentUpon>DeleteAdmin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presntation\DeleteCitizen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presntation\DeleteCitizen.Designer.cs">
+      <DependentUpon>DeleteCitizen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presntation\DeleteContender.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presntation\DeleteContender.Designer.cs">
+      <DependentUpon>DeleteContender.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presntation\DeleteParty.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presntation\DeleteParty.Designer.cs">
+      <DependentUpon>DeleteParty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presntation\DeletePartyMember.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presntation\DeletePartyMember.Designer.cs">
+      <DependentUpon>DeletePartyMember.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presntation\DeletePress.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presntation\DeletePress.Designer.cs">
+      <DependentUpon>DeletePress.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presntation\PartyMember_menu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presntation\PartyMember_menu.Designer.cs">
+      <DependentUpon>PartyMember_menu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presntation\AddParty.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presntation\AddParty.Designer.cs">
+      <DependentUpon>AddParty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presntation\PressRequest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presntation\PressRequest.Designer.cs">
+      <DependentUpon>PressRequest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presntation\Press_menu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presntation\Press_menu.Designer.cs">
+      <DependentUpon>Press_menu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presntation\PrintAllContenders.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presntation\PrintAllContenders.Designer.cs">
+      <DependentUpon>PrintAllContenders.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presntation\PrintAllParties.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presntation\PrintAllParties.Designer.cs">
+      <DependentUpon>PrintAllParties.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presntation\PrintPress.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presntation\PrintPress.Designer.cs">
+      <DependentUpon>PrintPress.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presntation\Registration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presntation\Registration.Designer.cs">
+      <DependentUpon>Registration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presntation\LogIn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presntation\LogIn.Designer.cs">
+      <DependentUpon>LogIn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presntation\ReportContenderElecion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presntation\ReportContenderElecion.Designer.cs">
+      <DependentUpon>ReportContenderElecion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presntation\ReportPartyElection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presntation\ReportPartyElection.Designer.cs">
+      <DependentUpon>ReportPartyElection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presntation\SaveAllVote.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presntation\SaveAllVote.Designer.cs">
+      <DependentUpon>SaveAllVote.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presntation\Showcontenderplatform.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presntation\Showcontenderplatform.Designer.cs">
+      <DependentUpon>Showcontenderplatform.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presntation\ShowPartyMembers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presntation\ShowPartyMembers.Designer.cs">
+      <DependentUpon>ShowPartyMembers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presntation\Showpartyplatform.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presntation\Showpartyplatform.Designer.cs">
+      <DependentUpon>Showpartyplatform.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presntation\VoteParty.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presntation\VoteParty.Designer.cs">
+      <DependentUpon>VoteParty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presntation\WriteArticle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presntation\WriteArticle.Designer.cs">
+      <DependentUpon>WriteArticle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Presntation\VoteContender.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presntation\VoteContender.Designer.cs">
+      <DependentUpon>VoteContender.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Presntation\AddContender.resx">
+      <DependentUpon>AddContender.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presntation\AddAdmin.resx">
+      <DependentUpon>AddAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presntation\AddPartyLeaderMember.resx">
+      <DependentUpon>AddPartyLeaderMember.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presntation\AddPress.resx">
+      <DependentUpon>AddPress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presntation\Admin_menu.resx">
+      <DependentUpon>Admin_menu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presntation\ChangePass.resx">
+      <DependentUpon>ChangePass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presntation\ChangePlatform.resx">
+      <DependentUpon>ChangePlatform.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presntation\Citizen_menu.resx">
+      <DependentUpon>Citizen_menu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presntation\ApplyRequestContender.resx">
+      <DependentUpon>ApplyRequestContender.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presntation\Contender_menu.resx">
+      <DependentUpon>Contender_menu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presntation\DeleteAdmin.resx">
+      <DependentUpon>DeleteAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presntation\DeleteCitizen.resx">
+      <DependentUpon>DeleteCitizen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presntation\DeleteContender.resx">
+      <DependentUpon>DeleteContender.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presntation\DeleteParty.resx">
+      <DependentUpon>DeleteParty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presntation\AddPartyMember.resx">
+      <DependentUpon>AddPartyMember.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presntation\DeletePartyMember.resx">
+      <DependentUpon>DeletePartyMember.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presntation\DeletePress.resx">
+      <DependentUpon>DeletePress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presntation\FinalResContender.resx">
+      <DependentUpon>FinalResContender.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presntation\FinalResContender.rdlc" />
+    <EmbeddedResource Include="Presntation\FinalResParty.resx">
+      <DependentUpon>FinalResParty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presntation\FinalResParty.rdlc" />
+    <EmbeddedResource Include="Presntation\PartyRegistration.resx">
+      <DependentUpon>PartyRegistration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presntation\Press_menu.resx">
+      <DependentUpon>Press_menu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presntation\AgeContender.rdlc" />
+    <EmbeddedResource Include="Presntation\SaveVote.rdlc" />
+    <EmbeddedResource Include="Presntation\ReportAgeParty.rdlc" />
+    <EmbeddedResource Include="Presntation\ReportAgeContender.resx">
+      <DependentUpon>ReportAgeContender.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presntation\ReportAgeParty.resx">
+      <DependentUpon>ReportAgeParty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presntation\ReportContenderNeighberhood.rdlc" />
+    <EmbeddedResource Include="Presntation\ReportContenderGender.rdlc" />
+    <EmbeddedResource Include="Presntation\ReportContenderGender.resx">
+      <DependentUpon>ReportContenderGender.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presntation\Inbox.resx">
+      <DependentUpon>Inbox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presntation\PartyLeader_menu.resx">
+      <DependentUpon>PartyLeader_menu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presntation\AddParty.resx">
+      <DependentUpon>AddParty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presntation\PressRequest.resx">
+      <DependentUpon>PressRequest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presntation\PrintAllContenders.resx">
+      <DependentUpon>PrintAllContenders.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presntation\PrintAllParties.resx">
+      <DependentUpon>PrintAllParties.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presntation\PrintPress.resx">
+      <DependentUpon>PrintPress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presntation\Registration.resx">
+      <DependentUpon>Registration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presntation\LogIn.resx">
+      <DependentUpon>LogIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presntation\ReportContenderNeighberhood.resx">
+      <DependentUpon>ReportContenderNeighberhood.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presntation\ReportNeigh.rdlc" />
+    <EmbeddedResource Include="Presntation\ReportPerGender.rdlc" />
+    <EmbeddedResource Include="Presntation\ReportGender.resx">
+      <DependentUpon>ReportGender.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presntation\ReportContender.rdlc" />
+    <EmbeddedResource Include="Presntation\ReportContenderElecion.resx">
+      <DependentUpon>ReportContenderElecion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presntation\ReportPerNeighborhood.resx">
+      <DependentUpon>ReportPerNeighborhood.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presntation\ReportPerParty.rdlc" />
+    <EmbeddedResource Include="Presntation\ReportPartyElection.resx">
+      <DependentUpon>ReportPartyElection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presntation\SaveAllVote.resx">
+      <DependentUpon>SaveAllVote.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presntation\Showcontenderplatform.resx">
+      <DependentUpon>Showcontenderplatform.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presntation\ShowContenders.rdlc" />
+    <EmbeddedResource Include="Presntation\ShowContenders.resx" />
+    <EmbeddedResource Include="Presntation\ShowPartyMembers.resx">
+      <DependentUpon>ShowPartyMembers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presntation\Showpartyplatform.resx">
+      <DependentUpon>Showpartyplatform.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presntation\VoteContender.resx">
+      <DependentUpon>VoteContender.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presntation\VoteParty.resx">
+      <DependentUpon>VoteParty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presntation\WriteArticle.resx">
+      <DependentUpon>WriteArticle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Election.xsc">
+      <DependentUpon>Election.xsd</DependentUpon>
+    </None>
+    <None Include="Election.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Election.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Election.xss">
+      <DependentUpon>Election.xsd</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\411472130.jpg" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.3.0\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.3.0\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.3.0\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.3.0\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.3.0\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.3.0\build\EntityFramework.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
